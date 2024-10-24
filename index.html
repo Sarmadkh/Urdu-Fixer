@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,19 @@
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sarmadkh/Urdu-Fixer/google_jsapi.js"></script>
 </head>
+
 <body>
-    <h1>اردو لائن فکسر</h1>
+    <div class="title-toggle-row">
+        <div class="toggle-container">
+            <span class="toggle-label">صرف کی بورڈ</span>
+            <label class="switch">
+                <input type="checkbox" id="toggleFix" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">درستگی کے لئے</span>
+        </div>
+        <h1>اردو لائن فکسر</h1>
+    </div>
     <div class="container">
         <div class="top-row">
             <textarea id="searchText" placeholder="تلاش کریں"></textarea>
