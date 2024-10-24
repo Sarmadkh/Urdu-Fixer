@@ -22,7 +22,7 @@ body {
 
 h1 {
     margin: 20px 0;
-    color: #ffcc00;
+    color: #3399ff;
     text-align: center;
 }
 
@@ -72,7 +72,7 @@ textarea {
 
 textarea:focus {
     outline: none;
-    border-color: #ffcc00;
+    border-color: #3399ff;
 }
 
 .outputBox {
@@ -93,7 +93,7 @@ button {
     padding: 10px 20px;
     height: 50px;
     font-size: 16px;
-    background-color: #ffcc00;
+    background-color: #3399ff;
     color: #121212;
     border: none;
     border-radius: 5px;
@@ -102,10 +102,10 @@ button {
 }
 
 button:hover {
-    background-color: #e6b800;
+    background-color: #2980b9;
 }
 
 button:active {
-    background-color: #d4a600;
+    background-color: #2575a5;
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.3);
 }
