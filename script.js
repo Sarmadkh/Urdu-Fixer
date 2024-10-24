@@ -15,6 +15,7 @@ function fixLines(text) {
     let result = [];
     for (let i = 0; i < lines.length; i++) {
         lines[i] = lines[i].replace(/\*\*\*/g, '');
+        lines[i] = lines[i].replace(/\.{3,}/g, '...');
         if (lines[i].includes('---')) {
             result.push('');
             result.push('_____________________');
