@@ -1,13 +1,20 @@
-document.getElementById('inputText').addEventListener('input', function () {
-    const inputText = document.getElementById('inputText').value;
-    const fixedText = fixLines(inputText);
-    document.getElementById('outputText').textContent = fixedText;
-});
+const textBox = document.getElementById('inputText');
+const searchBox = document.getElementById('searchText');
+const resultBox = document.getElementById('outputText');
+const copyButton = document.getElementById('copyButton');
+const toggleFix = document.getElementById('toggleFix');
 
-document.getElementById('copyButton').addEventListener('click', function () {
-    document.getElementById('searchText').value = '';
-    const outputText = document.getElementById('outputText').textContent;
-    navigator.clipboard.writeText(outputText)
+function updateResult() {
+    if (toggleFix.checked) {
+        resultBox.textContent = fixLines(textBox.value);
+    }
+}
+toggleFix.addEventListener('change', updateResult);
+textBox.addEventListener('input', updateResult);
+
+copyButton.addEventListener('click', function () {
+    searchBox.value = '';
+    navigator.clipboard.writeText(resultBox.textContent);
 });
 
 function fixLines(text) {
@@ -35,35 +42,33 @@ function fixLines(text) {
 
 // Google Transliterate API
 
-const searchBox = document.getElementById('searchText');
-const textBox = document.getElementById('inputText');
 google.load("elements", "1", {
     packages: "transliteration"
-  });
+});
 
 function onLoad() {
-var options = {
-    sourceLanguage:
-        google.elements.transliteration.LanguageCode.ENGLISH,
-    destinationLanguage:
-        [google.elements.transliteration.LanguageCode.URDU],
-    shortcutKey: 'ctrl+g',
-    transliterationEnabled: true
-};
+    var options = {
+        sourceLanguage:
+            google.elements.transliteration.LanguageCode.ENGLISH,
+        destinationLanguage:
+            [google.elements.transliteration.LanguageCode.URDU],
+        shortcutKey: 'ctrl+g',
+        transliterationEnabled: true
+    };
 
-var control =
-    new google.elements.transliteration.TransliterationControl(options);
-control.makeTransliteratable(['searchText']);
+    var control =
+        new google.elements.transliteration.TransliterationControl(options);
+    control.makeTransliteratable(['searchText']);
 }
 google.setOnLoadCallback(onLoad);
 
 // Search feature
 
-searchBox.addEventListener('input', function() {
+searchBox.addEventListener('input', function () {
     const searchText = searchBox.value;
     let textValue = textBox.value;
     const clearedText = textValue.replace(/\*\*\*(.*?)\*\*\*/g, '$1');
-    
+
     if (searchText) {
         const regex = new RegExp(searchText, 'gi');
         textValue = clearedText.replace(regex, '***$&***');
