@@ -90,6 +90,15 @@ textarea:focus {
     overflow-y: auto;
 }
 
+.outputBox::before {
+    content: "درست کردہ  اردو  لائن";
+    color: gray;
+}
+
+.outputBox:empty::before {
+    display: block;
+}
+
 button {
     padding: 10px 20px;
     height: 50px;
@@ -100,6 +109,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: "Amar", sans-serif;
 }
 
 button:hover {
