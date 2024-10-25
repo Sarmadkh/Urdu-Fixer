@@ -91,7 +91,7 @@ textarea:focus {
 }
 
 .outputBox::before {
-    content: "درست کردہ  اردو  لائن";
+    content: "درست کردہ اردو ٹیکسٹ";
     color: gray;
 }
 
