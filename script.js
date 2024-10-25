@@ -14,15 +14,21 @@ function toggleElements() {
     if (toggleFix.checked) {
         copyButton.style.display = 'block';
         resultBox.style.display = 'block';
-        searchBox.style.gridColumn = '';
         textBox.style.gridColumn = '';
+        textBox.style.display = 'block';
+        searchBox.style.gridColumn = '';
+        searchBox.style.height = '';
+        searchBox.placeholder = 'تلاش کریں';
     } else {
         copyButton.style.display = 'none';
         resultBox.style.display = 'none';
+        textBox.style.display = 'none';
         searchBox.style.gridColumn = 'span 2';
-        textBox.style.gridColumn = 'span 2';
+        searchBox.style.height = '500px';
+        searchBox.placeholder = 'اردو لکھیں';
     }
 }
+
 
 toggleFix.addEventListener('change', () => {
     toggleElements();
