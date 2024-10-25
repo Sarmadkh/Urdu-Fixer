@@ -78,4 +78,4 @@ searchBox.addEventListener('input', function () {
         }
         textBox.value = textValue;
     }
-});mj
+});
