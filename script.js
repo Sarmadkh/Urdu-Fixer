@@ -9,8 +9,27 @@ function updateResult() {
         resultBox.textContent = fixLines(textBox.value);
     }
 }
-toggleFix.addEventListener('change', updateResult);
+
+function toggleElements() {
+    if (toggleFix.checked) {
+        copyButton.style.display = 'block';
+        resultBox.style.display = 'block';
+        searchBox.style.gridColumn = '';
+        textBox.style.gridColumn = '';
+    } else {
+        copyButton.style.display = 'none';
+        resultBox.style.display = 'none';
+        searchBox.style.gridColumn = 'span 2';
+        textBox.style.gridColumn = 'span 2';
+    }
+}
+
+toggleFix.addEventListener('change', () => {
+    toggleElements();
+    updateResult();
+});
 textBox.addEventListener('input', updateResult);
+toggleElements();
 
 copyButton.addEventListener('click', function () {
     searchBox.value = '';
@@ -41,29 +60,23 @@ function fixLines(text) {
 }
 
 // Google Transliterate API
-
 google.load("elements", "1", {
     packages: "transliteration"
 });
 
 function onLoad() {
     var options = {
-        sourceLanguage:
-            google.elements.transliteration.LanguageCode.ENGLISH,
-        destinationLanguage:
-            [google.elements.transliteration.LanguageCode.URDU],
+        sourceLanguage: google.elements.transliteration.LanguageCode.ENGLISH,
+        destinationLanguage: [google.elements.transliteration.LanguageCode.URDU],
         shortcutKey: 'ctrl+g',
         transliterationEnabled: true
     };
-
-    var control =
-        new google.elements.transliteration.TransliterationControl(options);
+    var control = new google.elements.transliteration.TransliterationControl(options);
     control.makeTransliteratable(['searchText']);
 }
 google.setOnLoadCallback(onLoad);
 
 // Search feature
-
 searchBox.addEventListener('input', function () {
     if (toggleFix.checked) {
         const searchText = searchBox.value;
