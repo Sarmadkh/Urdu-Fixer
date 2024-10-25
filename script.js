@@ -34,6 +34,10 @@ toggleElements();
 copyButton.addEventListener('click', function () {
     searchBox.value = '';
     navigator.clipboard.writeText(resultBox.textContent);
+    modal.style.display = 'block';
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 2000);
 });
 
 function fixLines(text) {
