@@ -65,16 +65,17 @@ google.setOnLoadCallback(onLoad);
 // Search feature
 
 searchBox.addEventListener('input', function () {
-    const searchText = searchBox.value;
-    let textValue = textBox.value;
-    const clearedText = textValue.replace(/\*\*\*(.*?)\*\*\*/g, '$1');
+    if (toggleFix.checked) {
+        const searchText = searchBox.value;
+        let textValue = textBox.value;
+        const clearedText = textValue.replace(/\*\*\*(.*?)\*\*\*/g, '$1');
 
-    if (searchText) {
-        const regex = new RegExp(searchText, 'gi');
-        textValue = clearedText.replace(regex, '***$&***');
-    } else {
-        textValue = clearedText;
+        if (searchText) {
+            const regex = new RegExp(searchText, 'gi');
+            textValue = clearedText.replace(regex, '***$&***');
+        } else {
+            textValue = clearedText;
+        }
+        textBox.value = textValue;
     }
-
-    textBox.value = textValue;
-});
+});mj
