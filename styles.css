@@ -95,8 +95,8 @@ textarea:focus {
     color: gray;
 }
 
-.outputBox:empty::before {
-    display: block;
+.outputBox:not(:empty)::before {
+    content: none;
 }
 
 button {
